@@ -9,13 +9,16 @@ sidebarDepth: 1
 > [vuePress官方文档](https://vuepress.vuejs.org/zh/)
 
 ## 安装
-~~~sh
+~~~shell
 # 初始化项目
 npm init
-# 安装vitePress
+# 安装 vitePress
 npm i -D vitepress
 ~~~
 ---
+<tag />
+<wx />
+<span v-for="i in [1,2,3,4,5]" :key='i'>{{ i * 2 }} </span>
 
 ## 初始化项目
 - 首先创建一个docs目录 [目录结构](https://vuepress.vuejs.org/zh/guide/directory-structure.html)
@@ -193,3 +196,5 @@ pageClass: custom-page-class
   /* 特定页面的 CSS */
 }
 ~~~
+### markDown 扩展
+> [官方配置](https://fttp.jjf-tech.cn/vitepress/guide/markdown.html)

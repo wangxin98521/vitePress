@@ -14,7 +14,7 @@ module.exports = {
         displayAllHeaders: true, // 显示所有页面的标题链接
         nav: [
             { text: '首页', link: '/' },
-            { text: '分类', link: '/tags/' },
+            { text: '分类', link: '/Classify/index.html' },
             {
                 text: 'Languages',
                 items: [
@@ -24,40 +24,16 @@ module.exports = {
             },
         ],
         sidebar: {
-            '/vitePress/' : [
+            '/TechnologyStack/' : [
                 {
                     text: '技术栈',
                     collapsable: false,
                     children: [
-                        { text: 'vitePress', link: '/vitePress/', collapsable: false, },
-                        { text: 'aa', link: '/vitePress/aa' },
+                        { text: 'vitePress', link: '/TechnologyStack/vitePress/', collapsable: false, },
+                        { text: 'aa', link: '/TechnologyStack/vitePress/aa' },
                     ]
                 }
             ],
-            '/tags/': [
-                {
-                    text: '标签',
-                    children: [
-                        { text: '介绍', link: '/' },
-                        { text: '日志', link: '/foo/' },
-                    ],
-                },
-                {
-                    text: '标签组2',
-                    children: [
-                        { text: '介绍1', link: '/tags/' },
-                    ],
-                },
-            ],
-            '/foo/': [
-                {
-                    text: 'vui',
-                    children: [
-                        {text: '介绍', link: '/' },
-                        {text: '日志', link: '/foo/' },
-                    ],
-                },
-            ]
         },
         repo: 'wangxin98521/vitePress', // 仓库
         repoLabel: '查看源码',
