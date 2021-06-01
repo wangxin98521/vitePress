@@ -16,9 +16,6 @@ npm init
 npm i -D vitepress
 ~~~
 ---
-<tag />
-<wx />
-<span v-for="i in [1,2,3,4,5]" :key='i'>{{ i * 2 }} </span>
 
 ## 初始化项目
 - 首先创建一个docs目录 [目录结构](https://vuepress.vuejs.org/zh/guide/directory-structure.html)
@@ -196,5 +193,29 @@ pageClass: custom-page-class
   /* 特定页面的 CSS */
 }
 ~~~
+
+### 使用组件
+> vitePress 可以在md文件中 使用 html标签 & vue组件
+- html标签使用
+~~~html
+<span v-for="i in 3" style="color: red;">span标签 {{ i }}</span>
+~~~
+- vue 组件使用
+~~~ javascript
+/* .vitePress/theme/index.js */
+import DefaultTheme from 'vitepress/dist/client/theme-default'; // 默认主题扩展
+import tag from './component/tag.vue'; // 自己建相应的组件
+import text from './component/text.vue';
+
+export default {
+    ...DefaultTheme, // 默认主题扩展
+
+    enhanceApp({ app }) {
+        app.component('tag', tag); // 注册组件
+        app.component('wx', text); // 注册 wx 组件(使用: <wx />)
+    },
+}
+~~~
+
 ### markDown 扩展
 > [官方配置](https://fttp.jjf-tech.cn/vitepress/guide/markdown.html)

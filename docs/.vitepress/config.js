@@ -14,7 +14,7 @@ module.exports = {
         displayAllHeaders: true, // 显示所有页面的标题链接
         nav: [
             { text: '首页', link: '/' },
-            { text: '分类', link: '/Classify/index.html' },
+            { text: '分类', link: '/Classify/' },
             {
                 text: 'Languages',
                 items: [
