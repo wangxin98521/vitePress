@@ -38,6 +38,17 @@ module.exports = {
         repo: 'wangxin98521/vitePress', // 仓库
         repoLabel: '查看源码',
     },
+
+    plugins: [
+        [
+            '@vuepress/last-updated',
+            {
+                dateOptions:{
+                    hour12: false
+                }
+            }
+        ]
+    ],
     // 服务配置
     // host: 0.0.0.0, // 指定用于 dev server 的主机名
     // port: 9090, // 运行时的 端口号

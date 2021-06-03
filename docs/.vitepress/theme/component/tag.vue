@@ -1,30 +1,21 @@
 <template>
-    <div style="width: 100vw;">
-        <span v-for="(item, index) in tagArray" :key="index" @click="goPath(item.path)"> {{ item.name }} </span>
+    <div class="tagBox">
+        <a v-for="(item, index) in tagArray" :key="index" :href="item.path"> {{ item.name }} </a>
     </div>
 </template>
 
-<script>
-import { useRouter } from 'vue-router';
-export default {
-    setup () {
-        const router = useRouter();
-       const tagArray = [
-            {name: 'vitePress', path: '/TechnologyStack/vitePress/'},
-            {name: 'foo', path: '/foo/'},
-        ];
-        function goPath(path) {
-            console.log(location.href)
-            // console.log('455', router)
-
-        }
-
-        return { tagArray, goPath }
-    }
-};
+<script setup>
+const tagArray = [
+    { name: 'vitePress', path: '/TechnologyStack/vitePress/' },
+    { name: 'foo', path: '/foo/' },
+];
 </script>
-<style>
-span {
+<style scoped>
+.tagBox {
+    padding: 20px 0;
+    border: 1px solid red;
+}
+a {
     padding: 20px;
 }
 </style>
