@@ -19,18 +19,23 @@ module.exports = {
                 text: 'Languages',
                 items: [
                     { text: '首页', link: '/' },
-                    { text: '分类', link: '/tags/' },
+                    { text: '分类', link: '/Classify/' },
                 ]
             },
         ],
         sidebar: {
             '/TechnologyStack/' : [
                 {
-                    text: '技术栈',
-                    collapsable: false,
+                    text: 'Vue',
+                    collapsable: true,
                     children: [
-                        { text: 'vitePress', link: '/TechnologyStack/vitePress/', collapsable: false, },
-                        { text: 'aa', link: '/TechnologyStack/vitePress/aa' },
+                        { text: 'vitePress', link: '/TechnologyStack/Vue/vitePress', },
+                    ]
+                },
+                {
+                    text: '其他',
+                    children: [
+                        { text: 'git', link: '/TechnologyStack/Other/git', },
                     ]
                 }
             ],
@@ -38,17 +43,6 @@ module.exports = {
         repo: 'wangxin98521/vitePress', // 仓库
         repoLabel: '查看源码',
     },
-
-    plugins: [
-        [
-            '@vuepress/last-updated',
-            {
-                dateOptions:{
-                    hour12: false
-                }
-            }
-        ]
-    ],
     // 服务配置
     // host: 0.0.0.0, // 指定用于 dev server 的主机名
     // port: 9090, // 运行时的 端口号
