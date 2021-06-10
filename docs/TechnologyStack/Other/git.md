@@ -2,7 +2,9 @@
 title: git 使用说明
 ---
 # {{ $frontmatter.title }}
-> 代码管理 & 迭代 的工具
+> 代码管理 & 迭代 的工具 
+> [参考文档](https://blog.csdn.net/weixin_44950987/article/details/102619708?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1)
+> || [命令大全](https://blog.csdn.net/halaoda/article/details/78661334?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control)
 
 ## 基本命令
 ~~~shell
@@ -16,6 +18,63 @@ git pull # 拉取最新的代码 防止冲突
 git push # 推送前 需要解决现有的冲突
 ~~~
 ---
+
+## 命令
+### 常用命令
+~~~shell
+# 查看状态
+git status
+# 查看文件都修改了什么
+git diff 文件名
+# 查看日志
+git log
+
+# 历史版本管理
+git reflog # 查看历史版本 => 附带版本号
+git reset --hard 版本号 # 回退到指定版本
+# 回退到历史版本
+git reset --hard HEAD^ # 代表上一个版本
+git reset --hard HEAD^^ # 代表上上版 
+git reset --hard HEAD~数字 # 同上
+
+# 撤销修改
+git checkout --文件名 # 将上一次提交的文件 拉回工作区 => 已add 但未commit
+# 方法一: 回退到上一版本
+# 方法二: 手动更改文件 再 add => commit
+# 方法三: 
+git restore --文件名 # 丢弃工作区的修改
+
+# 本地文件远程关联github仓库
+git remote add origin git@github.com:wangxin98521/ceshi.git
+
+# 上传本地代码
+git push -u origin master # 简写: git push
+~~~
+
+### 分支
+~~~shell
+# 查看分支
+git branch
+# 创建分支
+git branch 分支名称 # 创建并切换 => git checkout -b 分支名
+# 切换分支:
+git checkout 分支名称 
+# 删除分支:
+git branch -d 分支名称
+# 更改分支名称:
+git reset –hard 分支重命名
+# 合并某分支到当前分支
+git merge 被合并的分支名
+
+# 更新云端分支代码到本地:
+git pull origin 云端分支名称
+# 将本地代码上传到云端
+git push origin 本地分支:云端分支
+# 删除远程分支
+git push origin --delete 分支名称
+# 将远程git仓库里的指定分支拉取到本地（本地不存在的分支）
+git checkout -b 本地分支名 origin/远程分支名
+~~~
 
 ## 使用流程
 ### 注册
