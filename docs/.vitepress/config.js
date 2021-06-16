@@ -3,6 +3,7 @@ module.exports = {
     lang: 'zh-US', // 语言
     description: '描述文字',
     theme: 'theme',
+	bese: '/vuepress',
     markdown: {
         lineNumbers: true, // 是否展示行号
     },
@@ -16,10 +17,10 @@ module.exports = {
             { text: '首页', link: '/' },
             { text: '分类', link: '/Classify/' },
             {
-                text: 'Languages',
+                text: '技术栈',
                 items: [
-                    { text: '首页', link: '/' },
-                    { text: '分类', link: '/Classify/' },
+                    { text: 'Vue', link: '/TechnologyStack/Vue/vitePress' },
+                    { text: '原生', link: '/Classify/' },
                 ]
             },
         ],
@@ -33,9 +34,17 @@ module.exports = {
                     ]
                 },
                 {
+                    text: '原生',
+                    collapsable: true,
+                    children: [
+                        { text: 'JavaScript', link: '/TechnologyStack/Native/JavaScript', },
+                        { text: 'TypeScript', link: '/TechnologyStack/Native/TypeScript', },
+                    ]
+                },
+                {
                     text: '其他',
                     children: [
-                        { text: 'git', link: '/TechnologyStack/Other/git', },
+                        { text: 'Git', link: '/TechnologyStack/Other/git', },
                     ]
                 }
             ],
