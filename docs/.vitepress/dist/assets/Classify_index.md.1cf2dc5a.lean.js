@@ -1,0 +1,1 @@
+import{r as t,o as a,c as e,a as r}from"./app.229ad9c2.js";const s='{"title":"","description":"","frontmatter":{"sidebar":false},"relativePath":"Classify/index.md","lastUpdated":1622477794968}',d={};d.render=function(s,d,i,n,o,l){const p=t("tag");return a(),e("div",null,[r(p)])};export default d;export{s as __pageData};

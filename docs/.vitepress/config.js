@@ -39,6 +39,7 @@ module.exports = {
                     children: [
                         { text: 'JavaScript', link: '/TechnologyStack/Native/JavaScript', },
                         { text: 'TypeScript', link: '/TechnologyStack/Native/TypeScript', },
+                        { text: 'TypeScript1', link: '/Instance/Native/JavaScript/Array', },
                     ]
                 },
                 {

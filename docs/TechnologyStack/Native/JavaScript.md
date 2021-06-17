@@ -8,6 +8,21 @@ title: JavaScript
 
 ## 数组
 > [MDN 数组](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array)
+### 添加
+~~~javascript
+Array.unshift('从头添加');
+Array.push('从尾添加');
+// 指定位置添加 一个或多个元素 => (目标索引， 删除多少个元素，添加的元素)
+Array.splice(index,delNum,item1,item2,itemX);
+~~~
+
+### 删除
+~~~javascript
+Array.shift(); // 从头删除
+Array.pop(); // 从尾删除
+Array.splice(index, delNum); // 通过索引删除某几个元素
+~~~
+
 ### 遍历
 ~~~javascript
 /* Array 必须是个数组 否则会报错 */
@@ -33,27 +48,13 @@ Array.some(方法);
 Array.filter(方法);
 ~~~
 
-### 添加
-~~~javascript
-Array.unshift('从头添加');
-Array.push('从尾添加');
-// 指定位置添加 一个或多个元素 => (目标索引， 删除多少个元素，添加的元素)
-Array.splice(index,delNum,item1,item2,itemX);
-~~~
-
-### 删除
-~~~javascript
-Array.shift(); // 从头删除
-Array.pop(); // 从尾删除
-Array.splice(index, delNum); // 通过索引删除某几个元素
-~~~
-
 ### 方法
-> [MDN 原型Prototype](https://developer.mozilla.org/zh-CN/docs/orphaned/Web/JavaScript/Reference/Global_Objects/Array/prototype)
+> [MDN 原型Prototype](https://developer.mozilla.org/zh-CN/docs/orphaned/Web/JavaScript/Reference/Global_Objects/Array/prototype) || 
+> [示例](../../Instance/Native/JavaScript/Array)
 ~~~javascript
 // 在浏览器控制台打印可以看到数组的方法;也可以向所有数组添加自定义方法或属性
 Array.prototype;
-// 根据指定内容进行切割
+// 根据指定字符串内容进行切割成数组
 Array.split('匹配的部分(必填，可用正则)', '匹配多少个(数字，选填)');
 // 查询其索引(对象也可以) => 返回 字符串数组，会自动排序
 Object.keys(Array);
@@ -87,4 +88,8 @@ Array.isArray(arr);
 Array.join(分割的元素(默认,));
 // 将参数 合并成一个数组
 Array.of(元素, 元素, 元素X);
+// 将数组反转 => 此处的Array 是默认的
+Array.reverse(arr);
+// 数组排序 => 默认方法为 将元素转为字符串 再通过UTF-16排序
+Array.sort(方法);
 ~~~
