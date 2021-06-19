@@ -43,6 +43,19 @@ arr.join(','); // => "1,2,3,4,5"  默认
 arr.join('-'); // => "1-2-3-4-5"
 ~~~
 
+### 判断是否为数组 Array.isArray
+~~~js
+Array.isArray([]); // => true
+Array.isArray([ 1, 2, 3 ]); // => true
+Array.isArray({ a: 1 }); // => false
+Array.isArray( false ); // => false
+Array.isArray( undefined ); // => false
+Array.isArray( NaN ); // => false
+Array.isArray( null ); // => false
+Array.isArray( '' ); // => false
+Array.isArray(); // => false
+~~~
+
 ### 返回满足条件的第一个元素 find
 ~~~js
 const arr = [ 1, 2, 3, 4, 5 ];
@@ -65,11 +78,28 @@ arr.indexOf('wang'); // => 5
 arr.indexOf('wa'); // => -1
 ~~~
 
+### 判断数组里是否有满足条件的元素 includes
+> 可以指定从哪个索引开始 [为负数时 -X 数组最后第X个开始]
+~~~js
+const arr = [ 1, 2, 3, 4, 5, 'wang' ];
+arr.includes(2); // => true
+arr.includes(2, 2); // => false
+arr.includes('wang'); // => true
+arr.includes('wa'); // => false
+arr.includes('wang', -1); // => true
+~~~
+
 ### 合并多个数组得到新数组 concat
 ~~~js
 const arr1 = [ 1, 2, 3 ], arr2 = [ 3, 4, 5 ], arr3 = [ 5, 6, 7 ];
 arr1.concat(arr2); // => [ 1, 2, 3, 3, 4, 5 ]
 arr1.concat(arr2, arr3); // => [ 1, 2, 3, 3, 4, 5, 5, 6, 7 ]
+~~~
+
+### 合并多个元素得到新数组 Array.of
+~~~js
+Array.of( 1, 2, 3 ) // => [ 1, 2, 3 ]
+Array.of( 1, { a: 1 }, undefined, null, NaN ) // => [ 1, { a: 1 }, undefined, null, NaN ]
 ~~~
 
 ### 返回每个元素走完方法后的新数组 map
@@ -109,4 +139,17 @@ const arr = [ 1, 2, 3, 4, 5 ];
 arr.fill(0); // => [ 0, 0, 0, 0, 0 ]
 arr.fill(0, 2); // => [ 1, 2, 0, 0, 0 ]
 arr.fill(0, 2, 4); // => [ 1, 2, 0, 0, 5 ]
+~~~
+
+### 数组反转(改变) reverse
+~~~js
+const arr = [ 1, 2, 3, 4, 5 ];
+arr.reverse(); // => [ 5, 4, 3, 2, 1 ]
+~~~
+
+### 数组排序(改变) sort
+~~~js
+const arr = [ 1, 2, 3, 4, 5 ];
+arr.sort((a, b) => a - b ); // => [ 1, 2, 3, 4, 5 ]
+arr.sort((a, b) => b - a ); // => [ 5, 4, 3, 2, 1 ]
 ~~~
