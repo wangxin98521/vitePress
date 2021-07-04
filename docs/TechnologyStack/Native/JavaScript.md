@@ -93,3 +93,66 @@ Array.reverse(arr);
 // 数组排序 => 默认方法为 将元素转为字符串 再通过UTF-16排序
 Array.sort(方法);
 ~~~
+
+
+## 对象
+> [MDN对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Working_with_Objects)
+
+### 定义一个对象
+~~~javascript
+let obj = { a: 1, b: 2 };
+obj.c = 3; // 添加 c
+obj.a = 11; // 修改 a 的值
+
+let propertyName = 'e';
+obj[propertyName] = 4; // 变量的形式添加 一个新属性
+
+// obj => { a: 11, b: 2, c: 3, e: 4 }
+~~~
+
+### getters & setters
+~~~javascript
+let obj = {
+    a: 1,
+    get b() {
+        return this.a + 1;
+    },
+    set c(params) {
+        this.a = params / 2;
+    }
+};
+obj.a; // => 1;
+obj.b; // => 2;
+obj.c = 12;
+obj.a; // => 6
+~~~
+
+### 删除属性
+~~~javascript
+let obj = { a: 1, b: 2 };
+delete obj.a;
+obj // => { b: 2 }
+~~~
+
+### 遍历
+~~~javascript
+let obj = { a: 1, b: 2, c: 3, e: 4 };
+
+/* 1: for循环 */
+for(let i in obj) {
+    console.log(`变量名${i}: ${obj[i]}`);
+};
+
+/* 2: Object.key && Object.value */
+Object.keys(obj); // 返回 元素数组 => [ "a", "b", "c", "e" ]
+Object.values(obj); // 返回 值数组 => [ 1, 2, 3, 4 ]
+~~~
+
+### 方法
+> [MDN-对象方法集合](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) ||
+> [示例](../../Instance/Native/JavaScript/Object)
+
+~~~javascript
+/* 常用 */
+Object.assign(对象, 要被合并的, '..'); // => 将其他对象的值合并到目标对象
+~~~
