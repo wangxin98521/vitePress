@@ -155,4 +155,13 @@ Object.values(obj); // 返回 值数组 => [ 1, 2, 3, 4 ]
 ~~~javascript
 /* 常用 */
 Object.assign(对象, 要被合并的, '..'); // => 将其他对象的值合并到目标对象
+Object.create(要继承的对象, 对新对象的初始化); // => 原型链 和 赋值
+
+/* 不常用 */
+Object.defineProperty(目标对象, 属性名, 值[描述]); // => 修改/添加当前对象属性
+Object.defineProperty(目标对象, { 属性: 描述[可多个] }); // => 修改/添加当前对象多个属性
+Object.entries(目标对象); // => 对象转为数组
+Object.fromEntries(目标二维数组); // => 数组转为对象
+Object.freeze(目标对象); // => 将对象冻结 不能修改
+Object.isFrozen(目标对象); // => 返回 目标对象是否被冻结 false/true
 ~~~
