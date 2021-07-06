@@ -37,6 +37,27 @@ delete obj3.obj2 // => false 不能删除
 obj3.obj2 = 40 // => 40 但没有修改成功
 ~~~
 
+### 创建 Object.getPrototypeOf()
+> 返回对象的原型。
+
+~~~javascript
+let obj1 = { a: 1, b: 2, c: 3 };
+let obj2 = Object.create(obj1);
+
+Object.getPrototypeOf(obj2) === obj1; // => true
+~~~
+
+### 创建 Object.setPrototypeOf()
+> 给对象 设置原型。
+
+~~~javascript
+let obj1 = { a: 1, b: 2, c: 3 };
+Object.setPrototypeOf(obj1, { ss: 22 });
+obj1._proto_; // => { ss: 22 }
+Object.setPrototypeOf(obj1, null);
+obj1._proto_; // => undefined
+~~~
+
 ### 定义属性 Object.defineProperty()
 > 直接在对象上定义新属性，或修改对象上现有属性，并返回该对象。
 
@@ -97,6 +118,113 @@ Object.entries(obj1) // => [['a', 1], ['b', 2], ['c', 3]]
 const arr = [['a', 1], ['b', 2], ['c', 3]];
 
 Object.fromEntries(arr) // => { a: 1, b: 2, c: 3 }
+~~~
+
+### 定义多个属性 Object.is()
+> 确定两个值是否 相同。
+- 两个都 undefined
+- 两个都 null
+- 两者true或两者false
+- 相同长度的两个字符串以相同的顺序具有相同的字符
+- 两者都是同一个对象（意味着两个值都引用了内存中的同一个对象）
+- 数字和
+  + 两个都 +0
+  + 两个都 -0
+  + 两个都 NaN
+  + 或两者都非零且两者都不是NaN且两者都具有相同的值
+
+~~~javascript
+Object.is(25, 25);                // => true
+Object.is('foo', 'foo');          // => true
+Object.is('foo', 'bar');          // => false
+Object.is(null, null);            // => true
+Object.is(undefined, undefined);  // => true
+Object.is(window, window);        // => true
+Object.is([], []);                // => false
+var foo = { a: 1 };
+var bar = { a: 1 };
+Object.is(foo, foo);              // => true
+Object.is(foo, bar);              // => false
+
+// Case 2: Signed zero
+Object.is(0, -0);                 // => false
+Object.is(+0, -0);                // => false
+Object.is(-0, -0);                // => true
+Object.is(0n, -0n);               // => true
+
+// Case 3: NaN
+Object.is(NaN, 0/0);              // => true
+Object.is(NaN, Number.NaN);        // => true
+~~~
+
+### 查看所有属性 Object.getOwnPropertyNames()
+> 返回在给定对象中直接找到的所有属性（包括不可枚举的属性，除了使用 Symbol 的属性）的数组。
+~~~javascript
+const obj1 = { a: 1, b: 2, c: 3 };
+
+Object.getOwnPropertyNames(obj1); // => [ "a", "b", "c" ]
+~~~
+
+### 查看指定属性的描述 Object.getOwnPropertyDescriptor()
+
+~~~javascript
+const obj1 = { a: 1, b: 2, c: 3 };
+
+Object.getOwnPropertyDescriptor(obj1, 'a'); // => { value: 1, configurable: true, enumerable: true, writable: true }
+~~~
+
+### 查看所有属性的描述 Object.getOwnPropertyDescriptors()
+
+~~~javascript
+const obj1 = { a: 1, b: 2, c: 3 };
+
+Object.getOwnPropertyDescriptors(obj1); // => { a:{ value: 1, ..}, b: {...}}
+~~~
+
+### 防止扩展 Object.preventExtensions()
+> 防止向对象添加新属性[防止将来对 对象进行扩展]。
+~~~javascript
+const obj1 = { a: 1, b: 2, c: 3 };
+
+Object.preventExtensions(obj1);
+obj1.a = 11; // => 可以
+obj1.b = 22; // => 可以
+obj1.c = 33; // => 可以
+obj1.d = 44; // => 无效果
+delete obj1.a; // => 可以被删除
+~~~
+
+### 查询是否可扩展 Object.isExtensible()
+> 查询对象 是否可以扩展。
+~~~javascript
+const obj1 = { a: 1, b: 2, c: 3 };
+
+Object.isExtensible(obj1); // => true
+Object.preventExtensions(obj1); // => 不可扩展操作
+Object.isExtensible(obj1); // => false
+~~~
+
+### 密封对象 Object.seal()
+> 防止向其添加新属性并将所有现有属性标记为不可配置。只要当前属性的值是可写的，它们的值仍然可以更改。
+~~~javascript
+const obj1 = { a: 1, b: 2, c: 3 };
+
+Object.preventExtensions(obj1);
+obj1.a = 11; // => 可以
+obj1.b = 22; // => 可以
+obj1.c = 33; // => 可以
+obj1.d = 44; // => 无效果
+delete obj1.a; // => 不可以被删除
+~~~
+
+### 查询是否可扩展 Object.isSealed()
+> 查询对象 是否被密封。
+~~~javascript
+const obj1 = { a: 1, b: 2, c: 3 };
+
+Object.isExtensible(obj1); // => false
+Object.preventExtensions(obj1); // => 密封操作
+Object.isExtensible(obj1); // => true
 ~~~
 
 ### 定义多个属性 Object.freeze()

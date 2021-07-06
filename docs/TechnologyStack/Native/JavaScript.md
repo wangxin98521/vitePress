@@ -156,12 +156,42 @@ Object.values(obj); // 返回 值数组 => [ 1, 2, 3, 4 ]
 /* 常用 */
 Object.assign(对象, 要被合并的, '..'); // => 将其他对象的值合并到目标对象
 Object.create(要继承的对象, 对新对象的初始化); // => 原型链 和 赋值
+Object.getPrototypeOf(目标对象); // => 返回 目标对象的原型
+Object.setPrototypeOf(目标对象, 对象的新原型[对象|null]); // => 设置 指定对象的原型
 
 /* 不常用 */
 Object.defineProperty(目标对象, 属性名, 值[描述]); // => 修改/添加当前对象属性
 Object.defineProperty(目标对象, { 属性: 描述[可多个] }); // => 修改/添加当前对象多个属性
 Object.entries(目标对象); // => 对象转为数组
 Object.fromEntries(目标二维数组); // => 数组转为对象
+Object.is(value1, value2); // => 比较两个值 是否相同[===的升级版]
+Object.getOwnPropertyNames(目标对象); // => 返回 目标对象 所有属性[不包含Symbol]
+// 返回描述信息
+Object.getOwnPropertyDescriptor(目标对象, 属性名); // => 返回 目标对象指定属性的描述属性
+Object.getOwnPropertyDescriptors(目标对象); // => 返回 目标对象所有属性的描述属性
+// 防止对象被修改等
+Object.preventExtensions(目标对象); // => 防止 对象添加新属性[不可扩展]
+Object.isExtensible(目标对象); // => 判断 对象是否可扩展
+Object.seal(目标对象); // => 密封一个对象
+Object.isSealed(目标对象); // => 判断 对象是否被密封
 Object.freeze(目标对象); // => 将对象冻结 不能修改
 Object.isFrozen(目标对象); // => 返回 目标对象是否被冻结 false/true
 ~~~
+> 描述信息
+
+| 值 | 作用 |
+|:--:|:--:|
+| value | 与属性关联的值(仅限数据描述符) |
+| writable | 当且仅当与属性关联的值可以更改(仅限数据描述符) |
+| get | 用作属性的 getter 的函数，或者undefined如果没有 getter(仅限访问器描述符) |
+| set | 用作属性设置器的函数，或者undefined如果没有设置器(仅限访问器描述符) |
+| configurable | 当且仅当该属性描述符的类型可以改变并且该属性可以从相应的对象中删除时 |
+| enumerable | 当且仅当在枚举相应对象的属性期间出现此属性 |
+---
+> 防扩展 < 密封 < 冻结
+
+|方法|禁止添加属性|禁止删除属性|禁止修改属性|
+|:--:|:--:|:--:|:--|
+|Object.preventExtensions()|是|否|否|
+|Object.seal()|是|是|否|
+|Object.freeze()|是|是|是|
