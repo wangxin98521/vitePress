@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+</body>
+
+<script>
+
+    class People {
+        constructor(name) {
+            this.name = name;
+            this.obj = {};
+        }
+
+        on(name, Fn) {
+            if(!this.obj[name]) { this.obj[name] = {} }
+            let a = Object.keys(this.obj[name]).length;
+            let newObj = {};
+            newObj[a] = Fn
+            Object.assign(this.obj[name], { ...newObj })
+        }
+
+        emit(name, params) {
+            for (let i in this.obj[name]) {
+                this.obj[name][i](params)
+            }
+        }
+
+        off(name, Fn) {
+            for (let i in this.obj[name]) {
+                if(this.obj[name][i] === Fn) {
+                    delete this.obj[name][i]
+                }
+            }
+
+        }
+
+        sayHi() {
+            console.log(`Hi, I am ${ this.name }`)
+        }
+    }
+
+    const say1 = (greeting) => {
+        console.log(`${ greeting }, nice meeting you!`)
+    }
+
+    const say2 = (greeting) => {
+        console.log(`${ greeting }, nice meeting you, too!`)
+    }
+
+    const jerry = new People('Jerry')
+
+    jerry.sayHi();
+    console.error('----------')
+
+    jerry.on('greeting', say1)
+    jerry.on('greeting', say2)
+
+    jerry.emit('greeting', 'Hi')
+    console.error('----------')
+
+    jerry.off('greeting', say1)
+    jerry.emit('greeting', 'Hi')
+
+    console.error('----正则----')
+    const str = 'this is String!!!'
+    console.log(str.split(/string/i)); // => [ 'this is', '!!!' ]
+    console.log(str.split(/t/i, 2)); // => [ '', 'his is S' ]
+    console.log(str.split('is')); // => [ 'th', ' ', ' String!!!' ]
+    console.log(str.split('is', 3)); // => [ 'th', ' ' ]
+    console.log(str.split(/[^a-s]/, )); // => [ 'th', ' ' ]
+
+
+
+</script>
+
+</html>

@@ -46,6 +46,7 @@ module.exports = {
                     text: '其他',
                     children: [
                         { text: 'Git', link: '/TechnologyStack/Other/git', },
+                        { text: '正则', link: '/TechnologyStack/Other/regular', },
                     ]
                 }
             ],
