@@ -129,7 +129,8 @@ str.split('is', 3); // => [ 'th', ' ', 'String!!!' ]
 ## 常用正则
 ~~~javascript
 const value = ''; // value 为传参
-/^[0-9]*$/.test(value); // 只允许输入数字 => 返回 true || false
-value.replace(/[^0-9]/g, ''); // 清除数字外的所有字符 => 返回 替换后的字符串
+/^\d+$/.test(value); // 只允许输入数字 => 返回 true || false
+value.replace(/[^\d]*/g, ''); // 清除数字外的所有字符 => 返回 替换后的字符串
 value.replace(/\s/g, ''); // 清除空格 => 返回 没有空格的字符串
+/^1(3\d|5[0-3, 5-9]|66|7[3-8]|8\d|9[1,8-9])\d{8}$/.test(value); // 判断是否为手机号
 ~~~
