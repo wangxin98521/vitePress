@@ -11,7 +11,6 @@ module.exports = {
         search: true,
         searchMaxSuggestions: 10,
         lastUpdated: '更新时间', // string | boolean
-        sidebarDepth: 1,
         displayAllHeaders: true, // 显示所有页面的标题链接
         nav: [
             { text: '首页', link: '/' },
