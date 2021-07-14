@@ -103,7 +103,7 @@
         // let val = inputValue.replace(/[^\d]*/g, ''); // 只允许输入数字
         // let val = /\S+@\S+\.\S+/.test(inputValue); // 邮箱校验
         // https://blog.csdn.net/lgysjfs/article/details/93845312
-        let val = /(https|http):\/\/?([\w.]+)+([\/[\w]+]*)\??(\S*)/g.exec('https://blog.csdn.net/lgys_jfs/article/details/93845312');
+        let val = /(?:https|http):\/\/?([\w.]+)+([\/[\w]+]*)\??(\S*)/g.exec('https://blog.csdn.net/lgys_jfs/article/details/93845312');
         console.log(val)
         let pText = document.createTextNode(val);
         content.appendChild(pText)
